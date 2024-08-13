@@ -1,4 +1,5 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.response import Response
 from django.utils import timezone
@@ -17,14 +18,23 @@ from drink_water_tracker.serializers import (
 
 class UserProfileViewset(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
+    search_fields = ['name', 'weight']
+    ordering_fields = ['name']
     serializer_class = UserProfileSerializer
 
 class DrinkWaterViewset(viewsets.ModelViewSet):
     queryset = DrinkWater.objects.all()
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
+    search_fields = ['user', 'date_drink_water']
+    ordering_fields = ['date_drink_water']
     serializer_class = DrinkWaterSerializer
 
 class DailyGoalViewset(viewsets.ModelViewSet):
     queryset = DailyGoal.objects.all()
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
+    search_fields = ['date', 'user']
+    ordering_fields = ['date']
     serializer_class = DailyGoalSerializer
 
 class UserCompletedGoalsViewSet(generics.ListAPIView):

@@ -1,14 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
-'''
-id: Inteiro, chave primária
-nome: String, nome do usuário
-peso: Float, peso do usuário em kg
-meta_diaria: Inteiro, quantidade de ml a ser consumida diariamente (calculado com base no peso)
-'''
-
 class UserProfile(models.Model):
     name = models.CharField(max_length=50)
     weight = models.FloatField(blank=False)
@@ -17,13 +9,6 @@ class UserProfile(models.Model):
     def save(self, *args, **kwargs):
         self.daily_goal = int(self.weight * 35)
         super().save(*args, **kwargs)
-
-'''
-id: Inteiro, chave primária
-usuario: ForeignKey para o modelo User, relacionamento com o usuário
-data: DateTime, data e hora do registro
-quantidade_ml: Inteiro, quantidade de ml registrada no consumo
-'''
 
 class DrinkWater(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
@@ -40,14 +25,6 @@ class DrinkWater(models.Model):
 
         daily_goal.update_total_consumption(self.quantity_ml)
 
-
-'''
-id: Inteiro, chave primária
-usuario: ForeignKey para o modelo User, relacionamento com o usuário
-data: Date, data do dia específico
-meta_atingida: Boolean, indica se a meta diária foi atingida
-consumo_total: Inteiro, soma total de ml consumidos no dia
-'''
 
 class DailyGoal(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
