@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/gabrielcarvalho/Projetos/Volpi Teste/backend/venv/bin/python" "$0" "$@"
-' '''
+#!/home/gabrielcarvalho/Projetos/drink/drink_water_tracker/backend/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys

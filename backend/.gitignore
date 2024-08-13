@@ -1,0 +1,26 @@
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos e diretórios de banco de dados
+*.sqlite3
+db.sqlite3
+
+# Arquivos e diretórios de cache e compilação
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Arquivos de log
+*.log
+logs/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Diretórios de arquivos gerados
+media/
+staticfiles/
