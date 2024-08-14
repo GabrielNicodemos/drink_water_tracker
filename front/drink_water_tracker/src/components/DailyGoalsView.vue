@@ -39,7 +39,7 @@ const goalStatusMessage = computed(() => hasDailyGoals.value && dailyGoals.value
   : 'Você ainda não bateu a meta hoje')
 
 
-const fetchDailyGoals = async () => {
+const fetchDailyGoalsDispatch = async () => {
   try {
     if (user.value && user.value.id) {
       await dispatch('fetchDailyGoals')
@@ -51,5 +51,5 @@ const fetchDailyGoals = async () => {
   }
 }
 
-onMounted(fetchDailyGoals)
+onMounted(fetchDailyGoalsDispatch)
 </script>

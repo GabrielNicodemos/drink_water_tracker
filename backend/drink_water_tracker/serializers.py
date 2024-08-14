@@ -19,10 +19,6 @@ class DrinkWaterSerializer(serializers.ModelSerializer):
         model = DrinkWater
         fields = '__all__'
 
-    def validate(self, values):
-        if validate_positive_value(values['quantity_ml']):
-            raise serializers.ValidationError({'quantity_ml': 'ml must be greater than 0'})
-
 class DailyGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyGoal
@@ -32,12 +28,6 @@ class UserCompletedGoalsSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyGoal
         fields = '__all__'
-
-class UserCompletedGoalsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DailyGoal
-        fields = '__all__'
-
 
 class ListUserHistoryGoalSerializer(serializers.ModelSerializer):
     class Meta:

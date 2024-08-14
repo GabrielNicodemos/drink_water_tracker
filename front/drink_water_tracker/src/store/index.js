@@ -5,7 +5,7 @@ const store = createStore({
   state() {
     return {
       user: null,
-      dailyGoals: {},
+      dailyGoals: [],
       historyGoals: [],
     }
   },
@@ -29,6 +29,7 @@ const store = createStore({
     async fetchDailyGoals({ commit, state }) {
         try {
           const response = await axios.get(`/api/daily_goals/${state.user.id}/today`)
+          console.log(response.data);
           commit('setDailyGoals', response.data)
         } catch (error) {
           console.error('Error fetching daily goals:', error)
