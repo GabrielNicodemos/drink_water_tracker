@@ -1,4 +1,4 @@
-# Drink Water rracker
+# Drink Water Tracker
 
 Este projeto é um aplicativo que ajuda os usuários a monitorar e registrar seu consumo diário de água, garantindo que alcancem suas metas diárias de hidratação com base no seu peso corporal.
 
